@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f3083e57-add3-47e6-a875-19c47694f154">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT p.Product_ID, p.Name AS ProductName, c.Cat_Name AS CategoryName
+FROM product p
+INNER JOIN category c ON p.Category_ID = c.Category_ID
+WHERE p.Product_ID NOT IN (SELECT Product_ID FROM inventory WHERE Quantity > 0);
+;]]>
+	</queryString>
+	<field name="Product_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProductName" class="java.lang.String"/>
+	<field name="CategoryName" class="java.lang.String"/>
+	<group name="Product_ID">
+		<groupExpression><![CDATA[$F{Product_ID}]]></groupExpression>
+	</group>
+	<group name="ProductName">
+		<groupExpression><![CDATA[$F{ProductName}]]></groupExpression>
+	</group>
+	<group name="CategoryName">
+		<groupExpression><![CDATA[$F{CategoryName}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="44" y="0" width="121" height="79" uuid="7f0416bd-805e-4d04-a542-76fef9522ad3"/>
+				<imageExpression><![CDATA["C:\\Users\\dell\\Desktop\\H20proTest01\\src\\h20protest01\\LoginBack_1  .jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="191" y="17" width="344" height="46" uuid="f4e0e4d5-6a5e-431f-8a6f-d4f18c03872f"/>
+				<textElement>
+					<font fontName="Poppins" size="24"/>
+				</textElement>
+				<text><![CDATA[H2OPro Inentory outOf stock]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="14" y="11" width="100" height="20" uuid="9542554e-523b-4286-84cb-1735b4749a8e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="129" y="2" width="100" height="20" uuid="209a0907-fd9f-4d2c-a933-c64e868d81fc"/>
+				<text><![CDATA[Product_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="262" y="2" width="100" height="20" uuid="5ba78c7c-1194-47a3-a312-dfcd5e77dfce"/>
+				<text><![CDATA[ProductName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="395" y="2" width="100" height="20" uuid="2d2b4c42-2495-4f48-b712-157b93421cff"/>
+				<text><![CDATA[CategoryName]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<textField>
+				<reportElement x="129" y="0" width="100" height="20" uuid="430abd84-045f-4cc9-9114-c7e1547f7618"/>
+				<textFieldExpression><![CDATA[$F{Product_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="0" width="100" height="20" uuid="2a86113c-dc85-4ebf-9203-cc8162f9c256"/>
+				<textFieldExpression><![CDATA[$F{ProductName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="100" height="20" uuid="ebe817e5-6cb5-4170-9837-ee2afef6785c"/>
+				<textFieldExpression><![CDATA[$F{CategoryName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

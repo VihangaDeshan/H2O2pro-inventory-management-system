@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7709cc06-b3d9-479c-af58-e164da5be869">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT p.Product_ID, p.Name AS ProductName, c.Cat_Name AS Category, i.Quantity AS InventoryQuantity
+FROM product p
+INNER JOIN inventory i ON p.Product_ID = i.Product_ID
+INNER JOIN category c ON p.Category_ID = c.Category_ID;]]>
+	</queryString>
+	<field name="Product_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ProductName" class="java.lang.String"/>
+	<field name="Category" class="java.lang.String"/>
+	<field name="InventoryQuantity" class="java.lang.Integer"/>
+	<group name="Product_ID">
+		<groupExpression><![CDATA[$F{Product_ID}]]></groupExpression>
+	</group>
+	<group name="ProductName">
+		<groupExpression><![CDATA[$F{ProductName}]]></groupExpression>
+	</group>
+	<group name="Category">
+		<groupExpression><![CDATA[$F{Category}]]></groupExpression>
+	</group>
+	<group name="InventoryQuantity">
+		<groupExpression><![CDATA[$F{InventoryQuantity}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="49" y="11" width="102" height="58" uuid="fd84761c-57cd-4887-8747-89700be57a57"/>
+				<imageExpression><![CDATA["C:\\Users\\dell\\Desktop\\H20proTest01\\src\\h20protest01\\LoginBack_1  .jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="176" y="11" width="316" height="43" uuid="98f0eb95-46e5-4a36-9a14-628384be5da0"/>
+				<textElement>
+					<font fontName="Poppins" size="28"/>
+				</textElement>
+				<text><![CDATA[H20PRO INVENTORY STYSTEM]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="63" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="18" y="6" width="100" height="20" uuid="a36c0b03-1e62-4493-bcd0-c497c748d16c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="87" y="2" width="100" height="20" uuid="62b064d4-6e5a-410b-8efb-0d728b0e518c"/>
+				<text><![CDATA[Product_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="8cdcfb04-3bef-4956-8ea4-9c5ae339c4ca"/>
+				<text><![CDATA[ProductName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="2" width="100" height="20" uuid="ad4decd2-62f3-444d-9b2e-3d2712d3a4e6"/>
+				<text><![CDATA[Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="2" width="100" height="20" uuid="71ad3c0f-06c6-4431-8e3b-844a08f29cf6"/>
+				<text><![CDATA[InventoryQuantity]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="87" y="0" width="100" height="20" uuid="f13630f8-3797-4d25-8d82-3214d8867e90"/>
+				<textFieldExpression><![CDATA[$F{Product_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="b2a99781-11c9-4e45-976a-f6c6029c03ea"/>
+				<textFieldExpression><![CDATA[$F{ProductName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="310" y="0" width="100" height="20" uuid="e7c34acb-d5f6-4db2-9c70-7390ae84a7d2"/>
+				<textFieldExpression><![CDATA[$F{Category}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="100" height="20" uuid="d4d37303-41af-4194-99b3-7eb6dbf691bb"/>
+				<textFieldExpression><![CDATA[$F{InventoryQuantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="52" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="270" y="34" width="100" height="20" uuid="e13928c5-94c7-445a-9283-f010663ce766"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

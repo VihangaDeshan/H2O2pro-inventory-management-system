@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="java" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d85ca5e1-d844-41dc-aaa3-1fef5281e5b8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT o.Order_ID, o.Cus_ID, c.fname AS Customer_FirstName, c.lname AS Customer_LastName, c.Address AS Customer_Address, c.Telephone AS Customer_Telephone, c.Email AS Customer_Email, o.Order_Date, o.Order_Status
+FROM `order` o
+INNER JOIN customer c ON o.Cus_ID = c.Cus_ID;]]>
+	</queryString>
+	<field name="Order_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Cus_ID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Customer_FirstName" class="java.lang.String"/>
+	<field name="Customer_LastName" class="java.lang.String"/>
+	<field name="Customer_Address" class="java.lang.String"/>
+	<field name="Customer_Telephone" class="java.lang.String"/>
+	<field name="Customer_Email" class="java.lang.String"/>
+	<field name="Order_Date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Order_Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="56" y="10" width="96" height="69" uuid="a18003c3-4583-466e-b020-c5e856a8b9a8"/>
+				<imageExpression><![CDATA["C:\\Users\\dell\\Desktop\\H20proTest01\\src\\h20protest01\\LoginBack_1  .jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="177" y="10" width="304" height="52" uuid="66fc1d26-d373-4844-a9a0-7b346617acd4"/>
+				<textElement>
+					<font fontName="Poppins" size="16"/>
+				</textElement>
+				<text><![CDATA[H20PRO INVENTORY CUSTOMER REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="100" height="20" uuid="47d878d3-768c-4a84-9bf5-dbca0949a516"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="f5aa147b-f3e2-4b4a-bb01-3c1b0e0f27e2"/>
+				<text><![CDATA[Order_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="a3d60130-c1a5-4809-b33b-201763a2c7ee"/>
+				<text><![CDATA[Cus_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="2" width="100" height="20" uuid="77850e5b-5b8d-4ae2-8bc6-6cb8b8c53630"/>
+				<text><![CDATA[Customer_FirstName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="2" width="100" height="20" uuid="981eeb98-f6d1-4d26-99e2-cf744197026f"/>
+				<text><![CDATA[Order_Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="2" width="100" height="20" uuid="db0986aa-3aa0-4151-a831-03b6bd6bdfc4"/>
+				<text><![CDATA[Order_Status]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a0a6a0bb-ebac-496e-a4ea-76bbafe90d15"/>
+				<textFieldExpression><![CDATA[$F{Order_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="64bb59f3-747d-4fa5-bb2c-692a226a51bd"/>
+				<textFieldExpression><![CDATA[$F{Cus_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="100" height="20" uuid="0ab96e82-cfdb-463f-b701-cea92b7603ba"/>
+				<textFieldExpression><![CDATA[$F{Customer_FirstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="0" width="100" height="20" uuid="b96156df-1dff-4d81-9c64-4da92dc7fa45"/>
+				<textFieldExpression><![CDATA[$F{Order_Date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="100" height="20" uuid="5742014b-dfd9-433a-8994-a70267f4a41f"/>
+				<textFieldExpression><![CDATA[$F{Order_Status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="224" y="0" width="100" height="20" uuid="ca58fabb-c838-4815-ad0b-aed0a0d33487"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
